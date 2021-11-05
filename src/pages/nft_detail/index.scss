@@ -1,0 +1,277 @@
+.nft_detail_page {
+	height: 100%;
+	position: relative;
+	.back_btn {
+		font-size: 30px;
+		position: absolute;
+		left: -80px;
+		cursor: pointer;
+		transition: 0.5s all;
+		&:hover {
+			color: #2b40ec;
+		}
+	}
+
+	.mid_box {
+		width: 65%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		overflow: auto;
+	}
+	.mid_box::-webkit-scrollbar {
+		width: 0px;
+	}
+	.search_nav {
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+
+	.search_input_box {
+		margin-left: 17px;
+		// padding-bottom: 9px;
+		// border-bottom: 1px solid #000;
+		.ant-input-affix-wrapper {
+			border-radius: 50px;
+		}
+	}
+
+	.line {
+		height: 1px;
+		background-color: #000;
+		width: 100%;
+		margin-top: 9px;
+	}
+
+	.space_box {
+		height: 36px;
+	}
+
+	.ant-card-bordered,
+	.ant-card-head {
+		border-color: #adb8d0;
+	}
+
+	// #ADB8D0
+	.nft_detail_box {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+		margin-top: 20px;
+
+		.characteristic_card {
+			margin-bottom: 14px;
+		}
+		.value {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			display: block;
+		}
+		.left_box {
+			width: 40%;
+			.nft_image {
+				width: 100%;
+				margin-bottom: 14px;
+				img {
+					object-fit: cover;
+					width: 100%;
+				}
+			}
+			.nft_detail_card {
+				.ant-card-head {
+					padding-left: 10px;
+				}
+
+				.card_item {
+					display: flex;
+					padding: 7.5px 0 4px;
+					border-bottom: 1px solid #adb8d0;
+					.label,
+					.value {
+						width: 50%;
+						// display: flex;
+						color: #1f2a44;
+					}
+
+					.label {
+						padding-left: 30px;
+						color: #364f85;
+					}
+				}
+			}
+		}
+
+		.right_box {
+			width: 60%;
+			margin-left: 13.5px;
+			.nft_desc {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				font-weight: 700;
+				margin-bottom: 30px;
+				.collection_name {
+					margin-bottom: 13px;
+				}
+
+				.nft_name_box,
+				.author_price_box,
+				.holder_price_box {
+					display: flex;
+					justify-content: space-between;
+				}
+
+				.nft_name_box {
+					margin-bottom: 13px;
+					.nft_name {
+						font-size: 24px;
+					}
+
+					.nft_price_label {
+						color: #16cdaa;
+						font-size: 16px;
+					}
+				}
+
+				.author_price_box {
+					font-size: 16px;
+					margin-bottom: 13px;
+				}
+			}
+		}
+	}
+
+	.works_desc_card {
+		margin-bottom: 14px;
+		.author_box {
+			margin-top: 16px;
+			text-align: right;
+		}
+	}
+
+	.collection_card {
+		.collection_name {
+			margin-bottom: 14px;
+		}
+	}
+
+	.transaction_history_box {
+		margin-top: 15px;
+		.warp_box {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			display: block;
+		}
+
+		.ant-table-thead,
+		th {
+			border-color: #adb8d0;
+			border-top: 1px solid #adb8d0;
+			background-color: transparent;
+			// border-bottom: 1px solid #adb8d0;
+		}
+
+		.ant-table-thead,
+		.ant-table-cell {
+			color: #364f85;
+		}
+
+		.table_head,
+		.body_tr {
+			color: #364f85;
+			display: flex;
+			justify-content: space-around;
+			border-bottom: 1px solid #adb8d0;
+			.head_item,
+			.body_td {
+				padding: 10px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				display: block;
+			}
+
+			.price_td {
+				color: #000;
+			}
+
+			.fromAddres_td,
+			.toAddress_td,
+			.date_td {
+				width: 12%;
+			}
+		}
+	}
+
+	.from_collection_box {
+		margin-top: 24px;
+		.ant-card-bordered {
+			border: none;
+		}
+
+		.ant-card-head {
+			border: 0.5px solid #adb8d0;
+			margin-bottom: 4px;
+		}
+		.ant-card-body {
+			display: flex;
+			padding: 0;
+			overflow: auto;
+		}
+
+		.nft_item {
+			// width: 32%;
+			background-color: #fff;
+			border: 0.5px solid #adb8d0;
+			box-sizing: border-box;
+			// margin: 0 10px 10px 0;
+			margin-right: 3px;
+			.nft_img {
+				// height: 310px;
+				width: 310px;
+				overflow: hidden;
+				display: flex;
+				align-items: center;
+				img {
+					width: 100%;
+					object-fit: contain;
+				}
+			}
+			.nft_describe_box {
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: column;
+				padding: 10px 5px;
+				.title {
+					font-weight: bold;
+					color: #364f85;
+				}
+				.type {
+					color: #16cdaa;
+					font-size: 12px;
+					white-space: nowrap;
+				}
+
+				.collection {
+					font-size: 10px;
+					color: #adb8d0;
+				}
+
+				.price {
+					font-size: 12px;
+					font-weight: bold;
+				}
+			}
+			.nft_top_box,
+			.nft_bottom_box {
+				// width: 50%;
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+			}
+		}
+	}
+}

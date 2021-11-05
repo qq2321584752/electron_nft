@@ -1,0 +1,176 @@
+.home_page {
+	height: 100%;
+
+	.mid_box {
+		width: 65%;
+		// background-color: pink;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	.search_nav {
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+
+	.search_input_box {
+		margin-left: 17px;
+		// padding-bottom: 9px;
+		// border-bottom: 1px solid #000;
+		.ant-input-affix-wrapper {
+			border-radius: 50px;
+		}
+	}
+
+	.line {
+		height: 1px;
+		background-color: #000;
+		width: 100%;
+		margin-top: 9px;
+	}
+
+	.state_box {
+		.state_menu {
+			display: flex;
+			margin-top: 10px;
+		}
+	}
+
+	.category_box {
+		display: flex;
+		margin-top: 10px;
+		align-items: center;
+		margin-bottom: 20px;
+		.ant-space-item {
+			.ant-radio-button-wrapper {
+				background-color: transparent;
+				color: #000000;
+				border: none;
+				box-shadow: none;
+				border-radius: 20px;
+			}
+
+			.ant-radio-button-wrapper-checked {
+				color: #fff;
+				background-color: #744de8;
+			}
+		}
+	}
+
+	.screen_box {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 26px;
+		.screen_box_left {
+			display: flex;
+			align-items: center;
+			.screen_label {
+				margin: 0 6px 0 15px;
+			}
+			.ant-tag {
+				border-radius: 30px;
+				background-color: #2b40ec;
+				color: #fff;
+				border: none;
+				padding: 2px 7px;
+			}
+			.anticon-close {
+				color: #fff;
+			}
+		}
+	}
+
+	.sort_btn {
+		border-radius: 30px;
+		background-color: #a0afe4;
+		// width: 120px;
+		&:hover,
+		&:focus {
+			color: #000;
+			border-color: #a0afe4;
+		}
+		.sort_icon {
+			margin-left: 40px;
+		}
+	}
+
+	.assets_list {
+		display: flex;
+		flex-wrap: wrap;
+		overflow: auto;
+		align-items: center;
+		justify-content: space-between;
+		// height: 200px;
+
+		// height: 100%;
+		// overflow: auto;
+		// padding: 0 16px;
+		// border: 1px solid rgba(140, 140, 140, 0.35);
+	}
+
+	.scrollableDiv {
+		height: 100%;
+		width: 100%;
+		overflow: auto;
+		padding: 0 16px;
+		// padding-right: 0;
+	}
+
+	.buttom_part {
+		display: flex;
+		flex-wrap: wrap;
+		overflow: auto;
+	}
+
+	.nft_item {
+		width: 32%;
+		background-color: #fff;
+		border: 0.5px solid #000;
+		box-sizing: border-box;
+		// margin: 0 10px 10px 0;
+		margin-bottom: 16px;
+		.nft_img {
+			// height: 310px;
+			// width: 310px;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			img {
+				width: 100%;
+				object-fit: contain;
+			}
+		}
+		.nft_describe_box {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+			padding: 10px 5px;
+			.title {
+				font-weight: bold;
+			}
+			.type {
+				color: #16cdaa;
+				font-size: 12px;
+			}
+
+			.collection {
+				font-size: 12px;
+				color: #464646;
+			}
+
+			.price {
+				font-size: 12px;
+				font-weight: bold;
+			}
+		}
+		.nft_top_box,
+		.nft_bottom_box {
+			// width: 50%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+}
