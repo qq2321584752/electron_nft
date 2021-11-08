@@ -24,7 +24,7 @@
     "release-win": "npm run build && electron-builder --win --x64",
     "release-mac": "npm run build && electron-builder --mac --x64",
     "release-all": "npm run build && electron-builder --win --x64 && electron-builder --mac --x64",
-    "release": "npm run build && cross-env GH_TOKEN=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 electron-builder --win --x64 && cross-env GH_TOKEN=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 electron-builder --mac --x64"
+    "release": "npm run build && cross-env GH_TOKEN=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 electron-builder --win --x64 && cross-env GH_TOKEN=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 electron-builder --mac --x64"
   },
   "build": {
     "productName": "NFT_Browser",

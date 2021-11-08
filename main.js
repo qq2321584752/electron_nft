@@ -16,17 +16,23 @@ app.on('ready', () => {
   autoUpdater.checkForUpdates();
 
   autoUpdater.on('error', (error) => {
-    dialog.showErrorBox('Error', error);
+    console.log(error,'-------------');
+    dialog.showErrorBox('Error', JSON.stringify(error));
   });
 
   // dialog.showErrorBox('Error', "一段测试内容");
   autoUpdater.on('update-available', () => {
+    console.log('进入update-available');
     dialog.showMessageBox({
-      type: "info",
-      title: "应用有新版本,是否现在更新?",
+      type: "question",
+      title: "检查更新",
+      message: "应用有新版本,是否现在更新?",
       buttons: ['是', '否']
-    }, (buttonIndex) => {
-      if (buttonIndex === 0) autoUpdater.downloadUpdate();
+    }).then( (buttonIndex) => {
+      console.log(buttonIndex,"buttonIndex");
+      if (buttonIndex.response === 0) {
+        console.log('点击确定按钮');
+        autoUpdater.downloadUpdate()};
     });
   });
 
@@ -38,14 +44,14 @@ app.on('ready', () => {
     })
   });
 
-  autoUpdater.on('checking-for-updat', () => {
-    console.log('检查版本更新');
+  autoUpdater.on('checking-for-update', () => {
+    console.log('检查版本更新-checking-for-update---------');
   });
 
 
   // download-progress
   autoUpdater.on('download-progress', (progressObj) => {
-    console.log(progressObj, '下载中');
+    console.log(progressObj, '下载中------');
   });
 
 
@@ -53,7 +59,8 @@ app.on('ready', () => {
     dialog.showMessageBox({
       title: "安装更新",
       message: "更新下载完毕,应用将重启并进行安装"
-    }, () => {
+    }).then(() => {
+      console.log('update-downloaded--------------');
       setImmediate(() => autoUpdater.quitAndInstall());
     });
   });
