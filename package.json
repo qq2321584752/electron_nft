@@ -1,12 +1,18 @@
 {
-  "name": "electron_test",
-  "version": "0.1.0",
+  "name": "electron_nft",
+  "version": "1.0.1",
   "private": true,
   "main": "main.js",
   "homepage": "./",
   "dependencies": {
-    "electron-is-dev": "^2.0.0"
+    "electron-is-dev": "^2.0.0",
+    "electron-updater": "^4.3.9"
   },
+  "author": {
+    "name": "laoliu",
+    "email": "13403303251@163.com"
+  },
+  "repository": "https://github.com/qq2321584752/electron_nft",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -17,13 +23,11 @@
     "dev": "concurrently NODE_ENV=development \"cross-env BROWSER=none npm start\" \"sleep 5 && electron .\"",
     "release-win": "npm run build && electron-builder --win --x64",
     "release-mac": "npm run build && electron-builder --mac --x64",
-    "release-all": "npm run build && electron-builder --win --x64 && electron-builder --mac --x64"
+    "release-all": "npm run build && electron-builder --win --x64 && electron-builder --mac --x64",
+    "release": "npm run build && cross-env GH_TOKEN=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 electron-builder --win --x64 && cross-env GH_TOKEN=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 electron-builder --mac --x64"
   },
-  "publish": [
-    "github"
-  ],
   "build": {
-    "productName": "NFT浏览器",
+    "productName": "NFT_Browser",
     "artifactName": "${productName}.${ext}",
     "appId": "com.example.app",
     "files": [
@@ -31,6 +35,9 @@
       "node_modules/**/*",
       "package.json",
       "./main.js"
+    ],
+    "publish": [
+      "github"
     ],
     "mac": {
       "identity": null
