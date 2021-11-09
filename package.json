@@ -1,12 +1,12 @@
 {
   "name": "electron_nft",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "private": true,
   "main": "main.js",
   "homepage": "./",
   "dependencies": {
     "electron-is-dev": "^2.0.0",
-    "electron-updater": "^4.3.9"
+    "electron-updater": "^4.1.2"
   },
   "author": {
     "name": "laoliu",
@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "ele": "electron .",
+    "ele": "GH_TOKEN=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 electron .",
     "buildMain": "webpack",
     "dev": "concurrently NODE_ENV=development \"cross-env BROWSER=none npm start\" \"sleep 5 && electron .\"",
     "release-win": "npm run build && electron-builder --win --x64",

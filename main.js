@@ -8,15 +8,17 @@ const isDev = require("electron-is-dev");
 // asar extract app.asar my-app
 // const indexUrl = isDev ? devUrl : prodUrl;
 app.on('ready', () => {
-  console.log(autoUpdater, "autoUpdater");
-
   autoUpdater.autoDownload = false;
-  if (isDev) autoUpdater.updateConfigPath = path.join(__dirname, 'dev-app-update.yml');
-  // autoUpdater.checkForUpdatesAndNotify();
-  autoUpdater.checkForUpdates();
+  if (isDev) {
+    autoUpdater.updateConfigPath = path.join(__dirname, 'dev-app-update.yml')
+    autoUpdater.checkForUpdates();
+  } else {
+    autoUpdater.checkForUpdatesAndNotify();
+  };
 
   autoUpdater.on('error', (error) => {
-    dialog.showErrorBox('Error', error);
+    console.log(error, "error---------");
+    dialog.showErrorBox('Error', '发生错误');
   });
 
   // dialog.showErrorBox('Error', "一段测试内容");
@@ -38,7 +40,7 @@ app.on('ready', () => {
     })
   });
 
-  autoUpdater.on('checking-for-updat', () => {
+  autoUpdater.on('checking-for-update', () => {
     console.log('检查版本更新');
   });
 
@@ -49,7 +51,7 @@ app.on('ready', () => {
   });
 
 
-  autoUpdater.on('update-downloaded', (progressObj) => {
+  autoUpdater.on('update-downloaded', () => {
     dialog.showMessageBox({
       title: "安装更新",
       message: "更新下载完毕,应用将重启并进行安装"
