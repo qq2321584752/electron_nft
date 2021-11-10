@@ -2,7 +2,7 @@
 	height: 100%;
 
 	.mid_box {
-		width: 65%;
+		width: 85%;
 		// background-color: pink;
 		height: 100%;
 		display: flex;
@@ -18,9 +18,10 @@
 		margin-left: 17px;
 		// padding-bottom: 9px;
 		// border-bottom: 1px solid #000;
-		.ant-input-affix-wrapper {
-			border-radius: 50px;
-		}
+		// .ant-input-affix-wrapper,
+		// .ant-input-search {
+		// 	border-radius: 50px;
+		// }
 	}
 
 	.line {
@@ -131,6 +132,8 @@
 		box-sizing: border-box;
 		// margin: 0 10px 10px 0;
 		margin-bottom: 16px;
+		max-width: 314px;
+		cursor: pointer;
 		.nft_img {
 			// height: 310px;
 			// width: 310px;

@@ -4,12 +4,23 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from '../home';
 import NftDetail from '../nft_detail';
+// import Button from '../../components/button';
 import "./index.scss";
-
+// const { ipcRenderer } = window.require("electron");
 const { Content, Sider } = Layout;
 
+
+
 const Main = () => {
-	return <Layout id="components-layout-demo-responsive ">
+	// const checkUpdate = () => {
+	// 	ipcRenderer.send('check_update', "开始检测更新");
+	// 	ipcRenderer.on("reply_check_update", (event: any, args: any) => {
+	// 		console.log(event, args, "reply_check_update event,args");
+	// 	});
+	// }
+
+	return <Layout id="components-layout-demo-responsive">
+		{/* <div className="check_update" > <Button type="link" onClick={checkUpdate}>检查更新</Button> </div> */}
 		<Sider
 			breakpoint="lg"
 			collapsedWidth="0"

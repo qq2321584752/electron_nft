@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { searchAssets, AssetSearch } from "../../models/asset";
-import { Input, Tag, Menu, Dropdown, Radio, Space, RadioChangeEvent } from "antd";
+import { Input, Tag, Menu, Dropdown, Radio, Space, RadioChangeEvent, Empty } from "antd";
 import Button from "../../components/button";
 import IconFont from "../../components/icon_font";
-import { AppstoreOutlined, SearchOutlined, LoadingOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, LoadingOutlined } from '@ant-design/icons';
 // in code ES6
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Categories } from "../../models/interface";
@@ -29,16 +29,19 @@ const Home = () => {
 	// 是否加载完毕所有数据
 	const [hasmore, sethasmore] = useState<boolean>(true);
 	// 类别筛选单选
-	const [categorie, setcategorie] = useState<Categories>(Categories.ALL);
+	const [categorie, setcategorie] = useState<Categories>(Number(sessionStorage.getItem("categorie")) || Categories.ALL);
 	// 排序筛选
 	const [order, setorder] = useState<string>('');
 
 	const [loadMore, setloadMore] = useState<boolean>(false);
 
+	const [query, setquery] = useState<string>('');
+
+
 	useEffect(() => {
-		getAssetsList({ limit, categorie, order });
+		getAssetsList({ limit, categorie, order, query });
 		// eslint-disable-next-line
-	}, [order, limit, categorie]);
+	}, [order, limit, categorie, query]);
 
 	// 排序菜单
 	const menu = <Menu title="排序">
@@ -66,29 +69,45 @@ const Home = () => {
 	// 单选框事件
 	const radioChange = (e: RadioChangeEvent) => {
 		const val = Number(e.target.value);
-		setloadMore(false);
+		restSearOption();
 		setcategorie(val);
+		sessionStorage.setItem("categorie", String(val));
+	}
+
+	function nftImage(url: string) {
+		let nftUrl = url;
+		if (nftUrl.endsWith("svg")) return nftUrl;
+		nftUrl = nftUrl + '?imageView2/0/w/300/h/300';
+		// var img = new Image();
+		// img.src = url + '?imageView2/0/w/300/h/300';
+		// img.onerror = function () {
+		// 	nftUrl = url;
+		// 	console.log(url, "error url");
+		// };
+
+		return nftUrl;
+	}
+
+	// 搜索框事件
+	const onSearch = (val: string) => {
+		setquery(val);
+		restSearOption()
+	}
+
+
+	// 重置搜索条件
+	const restSearOption = () => {
+		setloadMore(false);
 		setlimit([0, 10]);
 	}
 
-	// function nftImage(url: string) {
-	// 	let nftUrl = url;
-	// 	var img = new Image();
-	// 	img.src = url + '?imageView2/0/w/300/h/300';
-	// 	img.onerror = function () {
-	// 		nftUrl = url;
-	// 		console.log(url, "error url");
-	// 	};
-
-	// 	return nftUrl;
-	// }
 	return <div className="home_page">
 		<div className="mid_box">
 			<div className="search_nav_bar">
 				<div className="search_nav" >
 					<AppstoreOutlined />
 					<div className="search_input_box">
-						<Input placeholder="search for anything" prefix={<SearchOutlined />} />
+						<Input.Search placeholder="search for anything" allowClear onSearch={onSearch} />
 					</div>
 				</div>
 				<div className="line" />
@@ -109,7 +128,7 @@ const Home = () => {
 			<div className="category_box" >
 				<Radio.Group value={categorie} onChange={radioChange}>
 					<Space style={{ flexWrap: "wrap" }}>
-						<Radio.Button value="">全部</Radio.Button>
+						<Radio.Button value={0}>全部</Radio.Button>
 						<Radio.Button value={1}><IconFont type="icon-art02-alt" /> 艺术</Radio.Button>
 						<Radio.Button value={4}><IconFont type="icon-shijie" /> 虚拟世界</Radio.Button>
 						<Radio.Button value={6}><IconFont type="icon-zaizhancangpin" /> 收藏品</Radio.Button>
@@ -141,7 +160,7 @@ const Home = () => {
 
 			<div className="buttom_part" >
 				<div id="scrollableDiv" className="scrollableDiv">
-					<InfiniteScroll
+					{assetsList.length ? <InfiniteScroll
 						dataLength={assetsList.length}
 						next={loadMoreData}
 						hasMore={hasmore}
@@ -161,7 +180,7 @@ const Home = () => {
 									history.push(`/nft_detail/${token}/${tokenId}`, { token, tokenId });
 								}} >
 									<div className="nft_img" >
-										<img src={(item.image + '?imageView2/0/w/300/h/300')} alt="加载出错" />
+										<img src={nftImage(item.image)} alt="加载出错" />
 									</div>
 
 									<div className="nft_describe_box">
@@ -181,7 +200,7 @@ const Home = () => {
 							})}
 						</div>
 
-					</InfiniteScroll>
+					</InfiniteScroll> : <Empty className="empty_box" style={{ marginTop: "20%" }} />}
 				</div>
 			</div>
 

@@ -12,6 +12,7 @@
 /build
 /package
 /dist
+/mvp-ser
 
 # misc
 .DS_Store

@@ -63,6 +63,9 @@
 		.characteristic_card {
 			margin-bottom: 14px;
 		}
+		.characteristic_card .card_item:last-child {
+			border: 0 !important;
+		}
 		.value {
 			overflow: hidden;
 			text-overflow: ellipsis;
@@ -132,6 +135,7 @@
 					.nft_price_label {
 						color: #16cdaa;
 						font-size: 16px;
+						white-space: nowrap;
 					}
 				}
 

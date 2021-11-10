@@ -1,6 +1,6 @@
 {
   "name": "electron_nft",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "private": true,
   "main": "main.js",
   "homepage": "./",
@@ -12,19 +12,20 @@
     "name": "laoliu",
     "email": "13403303251@163.com"
   },
+  "description": "一段描述",
   "repository": "https://github.com/qq2321584752/electron_nft",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "ele": "GH_TOKEN=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 electron .",
+    "ele": "GH_TOKEN=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 electron .",
     "buildMain": "webpack",
     "dev": "concurrently NODE_ENV=development \"cross-env BROWSER=none npm start\" \"sleep 5 && electron .\"",
     "release-win": "npm run build && electron-builder --win --x64",
     "release-mac": "npm run build && electron-builder --mac --x64",
     "release-all": "npm run build && electron-builder --win --x64 && electron-builder --mac --x64",
-    "release": "npm run build && cross-env GH_TOKEN=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 electron-builder --win --x64 && cross-env GH_TOKEN=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 electron-builder --mac --x64"
+    "release": "npm run build && cross-env GH_TOKEN=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 electron-builder --win --x64 && cross-env GH_TOKEN=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 electron-builder --mac --x64"
   },
   "build": {
     "productName": "NFT_Browser",
@@ -40,7 +41,15 @@
       "github"
     ],
     "mac": {
-      "identity": null
+      "icon": "public/mac_icon.icns"
+    },
+    "win": {
+      "icon": "public/k8.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": true
     },
     "extends": null
   },

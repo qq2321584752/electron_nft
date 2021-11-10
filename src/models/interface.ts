@@ -8,7 +8,7 @@ export enum Categories {
 	SPORTS = 7,
 	UTILITY = 8,
 	Categories_NUM = 9,
-	ALL = '',
+	ALL = 0,
 }
 
 export declare enum AssetType {
